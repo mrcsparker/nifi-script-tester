@@ -16,8 +16,8 @@
  */
 package nifi.script.impl;
 
-import org.apache.nifi.logging.ComponentLog;
 import nifi.script.ScriptEngineConfigurator;
+import org.apache.nifi.logging.ComponentLog;
 
 import java.io.File;
 import java.net.MalformedURLException;
