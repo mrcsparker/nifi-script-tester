@@ -93,4 +93,9 @@ public class ScriptRunnerTest {
         System.setIn(bais);
         ScriptRunner.main(new String[]{"-all", "-attrfile=src/test/resources/attrfiles/incoming_attributes.properties", "src/test/resources/test_attributes_to_propfile.groovy"});
     }
+
+    @Test
+    public void testBasicJRuby() {
+        ScriptRunner.main(new String[]{"src/test/resources/test_basic.rb"});
+    }
 }

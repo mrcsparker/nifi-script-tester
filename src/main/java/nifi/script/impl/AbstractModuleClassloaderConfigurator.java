@@ -20,6 +20,7 @@ import nifi.script.ScriptEngineConfigurator;
 import org.apache.nifi.logging.ComponentLog;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.LinkedList;
@@ -58,7 +59,12 @@ public abstract class AbstractModuleClassloaderConfigurator implements ScriptEng
 
                     // If the path is a directory, we need to scan for JARs and add them to the classpath
                     if (modulePath.isDirectory()) {
-                        File[] jarFiles = modulePath.listFiles((dir, name) -> (name != null && name.endsWith(".jar")));
+                        File[] jarFiles = modulePath.listFiles(new FilenameFilter() {
+                            @Override
+                            public boolean accept(File dir, String name) {
+                                return (name != null && name.endsWith(".jar"));
+                            }
+                        });
 
                         if (jarFiles != null) {
                             // Add each to the classpath

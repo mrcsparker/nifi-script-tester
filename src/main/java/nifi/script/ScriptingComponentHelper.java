@@ -21,6 +21,7 @@ import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.ValidationContext;
 import org.apache.nifi.components.ValidationResult;
 import org.apache.nifi.controller.ConfigurationContext;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.logging.ComponentLog;
 import org.apache.nifi.processor.ProcessContext;
 import org.apache.nifi.util.StringUtils;
@@ -164,7 +165,7 @@ public class ScriptingComponentHelper {
                     .allowableValues(engines)
                     .defaultValue(engines[0].getValue())
                     .required(true)
-                    .expressionLanguageSupported(false)
+                    .expressionLanguageSupported(ExpressionLanguageScope.NONE)
                     .build();
             descriptors.add(SCRIPT_ENGINE);
         }
